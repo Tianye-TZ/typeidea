@@ -44,7 +44,7 @@ class Post(models.Model):
     STATUS_ITEMS = (
         (STATUS_NORMAL, '正常'),
         (STATUS_DELETE, '删除'),
-        (STATUS_DRAFT, '删除'),
+        (STATUS_DRAFT, '草稿'),
     )
 
     title = models.CharField(max_length=255, verbose_name="标题")
