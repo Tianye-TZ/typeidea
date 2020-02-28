@@ -20,6 +20,9 @@ class Link(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = '友链'
+    
+    def __str__(self):
+        return self.href
 
 
 class SideBar(models.Model):
