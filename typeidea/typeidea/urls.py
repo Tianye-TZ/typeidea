@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from blog.views import (
     IndexView, CategoryView, TagView,
@@ -33,3 +34,4 @@ urlpatterns = [
     url(r'^super_admin/', admin.site.urls, name='super-admin'),
     url(r'^admin/', custom_site.urls, name='admin'),
 ]
+# urlpatterns += staticfiles_urlpatterns()
