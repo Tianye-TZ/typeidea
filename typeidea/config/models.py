@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.loader import render_to_string
 
+
 class Link(models.Model):
     STATUS_NORMAL = 1
     STATUS_DELETE = 0
@@ -77,7 +78,7 @@ class SideBar(models.Model):
             result = self.content
         elif self.display_type == self.DISPLAY_LATEST:
             context = {
-                'posts': Post.latest_posts(with_related=False)
+                'posts': Post.latest_posts()
             }
             result = render_to_string('config/blocks/sidebar_posts.html', context)
         elif self.display_type == self.DISPLAY_HOT:

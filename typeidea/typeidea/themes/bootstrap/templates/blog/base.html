@@ -11,6 +11,8 @@
         margin-bottom: 5px;
     }
     </style>
+    {% block extra_head %}
+    {% endblock %}
   </head>
   <body>
 	<div class="container head">
@@ -24,14 +26,15 @@
               </li>
             {% endfor %}
             </ul>
-            <form class="form-inline my-2 my-lg-0" action='GET'>
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="/search/" method='GET'>
+              <input class="form-control mr-sm-2" type="search" name="keyword" placeholder=
+                  "Search" aria-label="Search" value="{{ keyword }}">
               <button class="btn btn-outline-success" type="submit">搜索</button>
             </form>
           </div>
         </nav>
         <div class="jumbotron">
-            <h1 class="display-4">DreamLab</h1>
+            <h2 class="display-5">DreamLab</h2>
             <p class="lead">基于Django的多人博客系统</p>
         </div>
 	</div>
