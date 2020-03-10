@@ -35,6 +35,10 @@ INSTALLED_APPS = [
     'config',
     'comment',
     'typeidea',
+    'dal',
+    'dal_select2',
+    'ckeditor',
+
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,6 +81,16 @@ TEMPLATES = [
         },
     },
 ]
+
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+        'tabSpaces': 4,
+        'extraPlugins': 'codesnippet',
+    },
+}
 
 WSGI_APPLICATION = 'typeidea.wsgi.application'
 

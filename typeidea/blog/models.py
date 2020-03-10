@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.functional import cached_property
 
 import mistune
 
@@ -103,6 +104,10 @@ class Post(models.Model):
         
         return post_list, tag
 
+    @cached_property
+    def tags(self):
+        return ','.join(self.tag.values_list('name', flat=True))    
+
     @staticmethod
     def get_by_category(category_id):
         try:
@@ -117,8 +122,10 @@ class Post(models.Model):
         return post_list, category
 
     @classmethod
-    def latest_posts(cls):
+    def latest_posts(cls, with_related=True):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
+        if with_related:
+            queryset = queryset.select_related('owner', 'category')
         return queryset
 
     @classmethod
