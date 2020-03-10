@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} {{ post.title }} {% endblock %}
+{% load comment_block %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/googlecode.css' %}">
+    <script src="{% static 'css/highlight.pack.js' %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+{% block main %}
+    {% if post %}
+    <h1>{{ post.title }}</h1>
+    <div>
+        <span>分类:<a href="{% url 'category-list' post.category_id %}">{{ post.category.name }}</a></span>
+        <span>作者:<a href="#">{{ post.owner.username }}</a></span>
+        <span>创建时间:{{ post.created_time }}</span>
+    </div>
+    <hr/>
+    <p>
+        {% autoescape off %}
+        {{ post.content_html }}
+        {% endautoescape %}
+    </p>
+    {% endif %}
+    {% comment_block request.path %}
+{% endblock %}
